@@ -12,9 +12,19 @@ html
   body class=page_classes
     nav
       .wrap
-        = link_to '/', :class => 'logo-link' do
-          = image_tag "nccc_logo.svg", :class => "logo"
-        = link_to "Home", "/"
+        = link_to '/', :class => 'branding' do
+          = image_tag "nccc_logo.svg", :class => "branding"
+        ul id="main"
+          li 
+            = link_to "/"
+              | Home
+              i.fa.fa-chevron-down
+            ul class="drop"
+              div
+                li 
+                  = link_to "TMCC", "#!/tmcc"
+                li jquery
+                li html
     = yield
     .seperator
     footer
