@@ -1,0 +1,290 @@
+@charset "utf-8";
+@import "bourbon";
+@import "neat";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+@include font-face("Bebas Regular", "fonts/BebasNeue Regular");
+@include font-face("Bebas Bold", "fonts/BebasNeueBold");
+@include font-face("Bebas Light", "fonts/BebasNeue Light");
+@include font-face("Bebas Thin", "fonts/BebasNeue Thin");
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+$white: #ECF0F1;
+$light: #F2EBBF;
+$red: #F06060;
+$blue: #2C3E50;
+$yellow: #F3B562;
+$purple: #5C4B51;
+
+$dark: #1E1E20;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  background-image: url("../images/dandini-campus-lg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+h1 {
+  margin-top: 0;
+  font-family: "Bebas Bold";
+  letter-spacing: 5px;
+  color: lighten($dark, 10);
+  // border-bottom: 4px double lighten($dark, 10);
+  padding-bottom: 40px;
+  position: relative;
+  &:before, &:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    background-color: lighten($dark, 10);
+    z-index: 1;
+  }
+  &:before {
+    bottom: -5px;
+  }
+}
+.fa.heading-icon {
+  color: lighten($dark, 10);
+  background-color: $dark;
+  margin-top: -25px;
+  padding: 0 150px;
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+  z-index: 2;
+}
+.text-center {
+  text-align: center;
+  margin: 0 auto;
+}
+small {
+  font-family: "Bebas Light";
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+.wrap {
+  @include outer-container;
+  height: auto;
+  margin-bottom: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  z-index: 9999;
+  padding: 0 50px;
+  @include transition(all 0.3s);
+  img {
+    height: 100%;
+  }
+  &.dark {
+    background-color: lighten($dark, 5);
+    line-height: 32px;
+    height: 30px;
+  }
+  .wrap {
+    @include outer-container;
+  }
+  a {
+    color: $white;
+    text-decoration: none;
+    text-transform: uppercase;
+    &.branding {
+      font-size: 25px;
+      @include transition(all 0.3s);
+    }
+    &:hover {
+      color: darken($white, 5);
+    }
+  }
+}
+
+header {
+  height: 85%;
+  width: 100%;
+  background-color: rgba(#000, 0.5);
+  .wrap {
+    height: 100%;
+  }
+  // background-color: #F3B562;
+}
+.header-wrap {
+  @include vertical-align;
+  @include shift(2.5);
+  @include span-columns(7);
+  background-color: rgba($blue, 0.5);
+  padding: 50px;
+  vertical-align: middle;
+  color: $white;
+  text-align: center;
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    border-top: 10px double $white;
+    border-bottom: 10px double $white;
+    padding-top: 10px;
+    padding-bottom: 0;
+    font-size: 50px;
+    color: $white;
+    &:before, &:after {
+      display: none;
+    }
+  }
+  .learnmore {
+    text-align: center;
+    margin: 10px; 
+    padding: 15px;
+    width: 100%;
+    border: 1px solid $white;
+    color: $white;
+    text-decoration: none;
+    display: block;
+    background-color: transparent;
+    @include transition(all 0.3s);
+    &:hover{
+      background-color: rgba($white, 0.2);
+    }
+  }
+}
+
+section {
+  min-height: 100%;
+  padding: 50px;
+  background-color: $dark;
+  color: darken($white, 2);
+}
+.row {
+  @include row;
+  margin: 10px auto;
+}
+
+.content {
+  @include shift(1);
+  @include span-columns(10);
+  margin-top: 40px;
+  h3 {
+    @include shift(1);
+    @include span-columns(8 of 10);
+    letter-spacing: 5px;
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom:25px;
+    font-family: "Bebas Thin";
+  }
+  .full {
+    @include span-columns(10 of 10);
+  }
+  .half {
+    @include span-columns(5 of 10);
+    position: relative;
+  }
+  .three-quarters {
+    @include span-columns(7.5 of 10);
+  }
+  .quarter {
+    @include span-columns(2.5 of 10);
+  }
+  p {
+    line-height: 24px;
+    font-size: 14px;
+    text-transform: none;
+  }
+  .me {
+    width: 200px;
+    border-radius: 5px;
+    // Uncomment the below line to make it normal
+    // @include transform(rotateX(180deg));
+  }
+}
+
+.bold {
+  font-family: "Bebas Regular";
+}
+
+footer {
+  background-color: $dark;
+}
+
+
+.white {
+  background-color: $white;
+}
+.blue {
+  background-color: $blue;
+}
+
+.seperator {
+  height: 300px;
+  width: 100%;
+  background-color: rgba(#000, 0.5);
+  .wrap {
+    height: 100%;
+  }
+}
+
+h4 {
+  margin: 10px;
+  font-family: "Bebas Light";
+  letter-spacing: 5px;
+}
+
+.icon-lg {
+  width: 100px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  background-color: $blue;
+  color: $white;
+  width: 200px;
+  padding: 15px; 
+  padding-left: 25px;
+  text-decoration: none;
+  font-family: Verdana;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0px auto;
+  margin-top: 50px;
+  @include transition(all 0.3s);
+  .fa {
+    position: absolute;
+    right: 25px;
+    @include transition(all 0.3s);
+  }
+  &:hover {
+    background-color: darken($blue, 5);
+    color: darken($white, 10);
+    .fa  {
+      right: 20px;
+    }
+  }
+}
