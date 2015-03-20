@@ -125,7 +125,18 @@ header {
   .wrap {
     height: 100%;
   }
+  h1 {
+    font-size: 50px;
+  }
   // background-color: #F3B562;
+}
+.header {
+  height: 50%;
+  width: 100%;
+  background-color: rgba(#000, 0.5);
+  .wrap {
+    height: 100%;
+  }
 }
 .header-wrap {
   @include vertical-align;
@@ -149,6 +160,13 @@ header {
     &:before, &:after {
       display: none;
     }
+  }
+  h2 {
+    border-top: 10px double $white;
+    border-bottom: 10px double $white;
+    padding-top: 10px;
+    padding-bottom: 0;
+    line-height: 50px;
   }
   .learnmore {
     text-align: center;
@@ -179,17 +197,13 @@ section {
 }
 
 .content {
-  @include shift(1);
-  @include span-columns(10);
+  @include span-columns(12);
   margin-top: 40px;
   h3 {
-    @include shift(1);
-    @include span-columns(8 of 10);
-    letter-spacing: 5px;
     font-size: 25px;
     line-height: 30px;
     margin-bottom:25px;
-    font-family: "Bebas Thin";
+    font-family: "Bebas Light", sans-serif;
   }
   .full {
     @include span-columns(10 of 10);
@@ -204,6 +218,19 @@ section {
   .quarter {
     @include span-columns(2.5 of 10);
   }
+  .third {
+    @include span-columns(4 of 12);
+    text-align: left;
+    position: relative;
+  }
+  img {
+    width: 100%;
+  }
+  .caption {
+    width: 100%;
+    height: 50px;
+    background-color: lighten($dark, 5);
+  }
   p {
     line-height: 24px;
     font-size: 14px;
@@ -216,6 +243,17 @@ section {
     // @include transform(rotateX(180deg));
   }
 }
+
+
+.content a {
+  text-decoration: none;
+  color: #1BBC9B;
+  @include transition(all 0.3s);
+  &:hover {
+    color: darken(#1BBC9B, 5);
+  }
+}
+
 
 .bold {
   font-family: "Bebas Regular";
@@ -242,10 +280,8 @@ footer {
   }
 }
 
-h4 {
-  margin: 10px;
-  font-family: "Bebas Light";
-  letter-spacing: 5px;
+h3 {
+  margin: 0px;
 }
 
 .icon-lg {
@@ -259,20 +295,30 @@ h4 {
     vertical-align: middle;
 }
 
+a.image-link {
+  text-decoration: none;
+  color: #ffffff;
+  &:hover .btn {
+    background-color: darken(#223b49, 5);
+    color: darken($white, 10);
+    .fa  {
+      right: 20px;
+    }
+  }
+}
+
 .btn {
   position: relative;
   display: block;
-  background-color: $blue;
+  background-color: #223b49;
   color: $white;
-  width: 200px;
-  padding: 15px; 
-  padding-left: 25px;
+  padding: 5px; 
+  padding-left: 20px;
   text-decoration: none;
   font-family: Verdana;
   font-size: 20px;
-  text-transform: uppercase;
+  // text-align: center;
   margin: 0px auto;
-  margin-top: 50px;
   @include transition(all 0.3s);
   .fa {
     position: absolute;
@@ -280,7 +326,7 @@ h4 {
     @include transition(all 0.3s);
   }
   &:hover {
-    background-color: darken($blue, 5);
+    background-color: darken(#223b49, 5);
     color: darken($white, 10);
     .fa  {
       right: 20px;
@@ -376,4 +422,97 @@ li{
       @include transform(translate(#{(-1+$i)*$min-width},0));
     }
   }    
+}
+
+figure {
+  margin: 0;
+  position: relative;
+}
+
+figure img {
+  max-width: 100%;
+  display: block;
+  position: relative;
+}
+
+figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  background: #2c3f52;
+  color: #ed4e6e;
+}
+
+.content .third figcaption h3 {
+  font-family: "Bebas Bold";
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+figcaption span:before {
+  content: 'by ';
+}
+
+figcaption a {
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  background: #ed4e6e;
+  color: #fff;
+}
+
+/* Caption Style 3 */
+ figure {
+  overflow: hidden;
+}
+
+ figure img {
+  -webkit-transition: -webkit-transform 0.4s;
+  -moz-transition: -moz-transform 0.4s;
+  transition: transform 0.4s;
+}
+
+figure:hover img,
+ figure.cs-hover img {
+  -webkit-transform: translateY(-50px);
+  -moz-transform: translateY(-50px);
+  -ms-transform: translateY(-50px);
+  transform: translateY(-50px);
+}
+
+ figcaption {
+  height: 100px;
+  width: 100%;
+  top: auto;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+  -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+  transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+figure:hover figcaption{
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+  -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+  transition: transform 0.4s, opacity 0.1s;
+}
+
+ figcaption a {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
