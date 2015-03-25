@@ -209,11 +209,23 @@ section {
     @include span-columns(10 of 10);
   }
   .half {
-    @include span-columns(5 of 10);
+    @include span-columns(6);
+    @include shift(3);
     position: relative;
+    .half {
+      @include shift(0);
+    }
   }
   .three-quarters {
-    @include span-columns(7.5 of 10);
+    @include span-columns(8 of 12);
+    @include shift(2);
+    .half {
+      @include shift(0);
+      margin-top: 10px;
+    }
+    .half:nth-of-type(2n) {
+      margin-right: 0;
+    }
   }
   .quarter {
     @include span-columns(2.5 of 10);
